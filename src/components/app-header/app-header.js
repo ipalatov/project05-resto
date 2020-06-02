@@ -1,17 +1,15 @@
 import React from 'react';
 import cartIcon from './shopping-cart-solid.svg';
 import './app-header.scss';
+import { NavLink } from 'react-router-dom';
 
-const AppHeader = ({total}) => {
+const AppHeader = ({ total }) => {
     return (
         <header className="header">
-            <a className="header__link" href="#">
-                Menu
-            </a>
-            <a className="header__link" href="#">
-                <img className="header__cart" src={cartIcon} alt="cart"></img>
-                Total: {total} $
-            </a>
+            <NavLink className="header__link" to='/menu'>Menu</NavLink>
+            <NavLink className="header__link" to='/cart'>
+                <img className="header__cart" src={cartIcon} alt="cart"></img>Total: {total} $
+            </NavLink>
         </header>
     )
 };
