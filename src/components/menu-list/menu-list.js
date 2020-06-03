@@ -25,17 +25,15 @@ class MenuList extends Component {
 
         const { menuItems, loading, error } = this.props;
 
-        if (error) { return <Error message={'Error accessing the database'}/> }
+        if (error) { return <Error message={'Error accessing the database'} /> }
 
-        if (loading) { return <Spinner /> }
+        if (loading) { return <Spinner /> };
+
+        const items = menuItems.map(item => <MenuListItem ket={item.id} menuItem={item} />);
 
         return (
-            <ul className="menu__list">
-                {
-                    menuItems.map(item => <MenuListItem ket={item.id} menuItem={item} />)
-                }
+            <View items={items} />
 
-            </ul>
         )
     }
 };
@@ -50,8 +48,15 @@ const mStP = (state) => {
 }
 const mDtP = { menuLoaded, menuRequested, menuRequestError };
 
-
 export default compose(
     connect(mStP, mDtP),
     WithRestoService()
 )(MenuList);
+
+const View = ({ items }) => {
+    return (
+        <ul className="menu__list">
+            {items}
+        </ul>
+    )
+}
