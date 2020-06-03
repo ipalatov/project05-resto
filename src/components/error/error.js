@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Error = () => {
-    return <div className="error">Error</div>
+const Error = ({ message }) => {
+    return <div className="error">{message ? message : 'ОШИБКА'}</div>
 }
 
 export default Error;
